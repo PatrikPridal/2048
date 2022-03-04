@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let totalFour = squares[i+(width*3)].innerHTML
             let column = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
 
-            let fiteredColumn = column.filter(num => num)
+            let filteredColumn = column.filter(num => num)
             let missing = 4 - filteredColumn.length
             let zeros = Array(missing).fill(0)
             let newColumn = zeros.concat(filteredColumn)
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let totalFour = squares[i+(width*3)].innerHTML
                 let column = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
     
-                let fiteredColumn = column.filter(num => num)
+                let filteredColumn = column.filter(num => num)
                 let missing = 4 - filteredColumn.length
                 let zeros = Array(missing).fill(0)
                 let newColumn = filteredColumn.concat(zeros)
@@ -125,13 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-
-
-
-
-
-
-
     function combineRow() {
         for (let i=0; i < 15; i++) {
             if (squares[i].innerHTML === squares[i+1].innerHTML) {
@@ -142,12 +135,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function combineColumn() {
+        for (let i=0; i < 12; i++) {
+            if (squares[i].innerHTML === squares[i+width].innerHTML) {
+                let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+width].innerHTML)
+                squares[i].innerHTML = combinedTotal
+                squares[i+width].innerHTML = 0
+            }
+        }
+    }
+
     // assign keycodes
     function control(e) {
         if(e.keyCode === 39) {
             keyRight()
         } else if (e.keyCode === 37) {
             keyLeft()
+        } else if (e.keyCode === 38) {
+            keyUp()
+        } else if (e.keyCode === 40) {
+            keyDown()
         }
     }
     document.addEventListener('keyup', control)
@@ -166,6 +173,19 @@ document.addEventListener('DOMContentLoaded', () => {
         generate()
     }
 
+    function keyDown() {
+        moveDown()
+        combineColumn()
+        moveDown()
+        generate()
+    }
+
+    function keyUp() {
+        moveUp()
+        combineColumn()
+        moveUp()
+        generate()
+    }
 
 
 
