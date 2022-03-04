@@ -14,3 +14,14 @@
     text-align:center;
     font-weight: bold;
 }
+.score-container {
+    display: flex;
+    align-items: center;
+}
+
+.score-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
