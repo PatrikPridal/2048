@@ -17,11 +17,24 @@
 .score-container {
     display: flex;
     align-items: center;
+    background-color:aquamarine;
+}
+
+.score {
+    text-align: center;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
 
 .score-title {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
 
+}
+
+.grid-container__2 {
+    border-radius: 2px;
+    border-color: aqua;
+    border: 5px;
 }
